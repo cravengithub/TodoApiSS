@@ -1,0 +1,6 @@
+@TodoApiSS_HostAddress = http://localhost:5088
+
+GET {{TodoApiSS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
