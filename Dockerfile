@@ -1,6 +1,6 @@
- Tahap 1: Build
+# Tahap 1: Build
 # Menggunakan image SDK (Software Development Kit) untuk build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 # Salin file .csproj dan .sln (jika ada) dan restore dependencies
 COPY *.csproj .
@@ -10,7 +10,7 @@ COPY . .
 RUN dotnet publish "TodoApiSS.csproj" -c Release -o /app/publish
 # Tahap 2: Rilis
 # Menggunakan image ASP.NET runtime yang lebih ringan
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 # .NET 8+ container berjalan sebagai user non-root 'app'
